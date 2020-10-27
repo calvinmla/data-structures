@@ -4,10 +4,23 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
-    //added this var newNode = Node(value);
+    var newNode = new Node(value);
+    
+    if (this.tail) { //while the tail is pointing to something / has something
+      
+      this.tail.next = newNode; // make the next pointer point to the  new node so the link is established
+    } else { 
+      //start here if linklist is empty 
+      console.log('1st : ');
+      this.head = newNode; // 1st. makes the head the new node 
+    }
+ 
+    this.tail = newNode; // 2nd. make also the tale point to the very first node because only one node exist
+    // 3rd. if you add more to the existing list then you go into the if statement.
   };
 
   list.removeHead = function() {
+
   };
 
   list.contains = function(target) {
