@@ -11,7 +11,7 @@ var LinkedList = function() {
       this.tail.next = newNode; // make the next pointer point to the  new node so the link is established
     } else { 
       //start here if linklist is empty 
-      console.log('1st : ');
+      // console.log('1st : ');
       this.head = newNode; // 1st. makes the head the new node 
     }
  
@@ -20,10 +20,23 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
+    var tempValue = this.head.value;
+    this.head = this.head.next;
+    return tempValue;
 
   };
 
   list.contains = function(target) {
+
+    var currentNode = this.head;
+
+    while (currentNode) {  
+      if (currentNode.value === target) {
+        return true;
+      } 
+      currentNode = currentNode.next;
+    }
+    return false;
   };
 
   return list;
