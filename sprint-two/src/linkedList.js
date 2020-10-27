@@ -23,7 +23,6 @@ var LinkedList = function() {
     var tempValue = this.head.value;
     this.head = this.head.next;
     return tempValue;
-
   };
 
   list.contains = function(target) {
