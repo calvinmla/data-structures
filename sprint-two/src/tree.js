@@ -22,7 +22,7 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  var result = false 
+  var result = false; 
 
   var traverse = function (treeNode) {
     if (treeNode.value === target) {
@@ -35,7 +35,7 @@ treeMethods.contains = function(target) {
         }
       }
     }
-  }
+  };
 
 
   traverse (this);
