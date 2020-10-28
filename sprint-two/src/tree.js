@@ -4,16 +4,10 @@ var Tree = function(value) {
 
   // your code here
   newTree.children = [];// fix me
-  extend(newTree, treeMethods);
-
+  _.extend(newTree, treeMethods);
   return newTree;
+};
 
-};
-var extend = function(to, from) {
-  for (var key in from) {
-    to[key] = from[key];
-  }
-};
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
@@ -22,7 +16,7 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  var result = false 
+  var result = false;
 
   var traverse = function (treeNode) {
     if (treeNode.value === target) {
@@ -35,13 +29,10 @@ treeMethods.contains = function(target) {
         }
       }
     }
-  }
-
-
+  };
   traverse (this);
   return result;
 };
-
 
 /*
  * Complexity: What is the time complexity of the above functions?
