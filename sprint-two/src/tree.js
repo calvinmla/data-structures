@@ -35,7 +35,6 @@ treeMethods.contains = function(target) {
         }
       }
     }
-    
   };
 
 
