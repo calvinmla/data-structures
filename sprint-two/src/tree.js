@@ -4,47 +4,49 @@ var Tree = function(value) {
 
   // your code here
   newTree.children = [];// fix me
-  _.extend(newTree, treeMethods);
+  extend(newTree, treeMethods);
 
   return newTree;
-};
 
+};
+var extend = function(to, from) {
+  for (var key in from) {
+    to[key] = from[key];
+  }
+};
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  var newTree = new Tree(value);
-  if (this.children.length === 0) {
-    this.children.push(newTree);
-  } else {
-    for (var i = 0; i < this.children.length; i++) {
-      //if ()
-    }
-  }
+  var child = new Tree(value);
+  this.children.push(child);
 };
 
 treeMethods.contains = function(target) {
-  if (this.value === target) {
-    return true;
-  }
-  if (this.children.length !== 0) {
-    for (var i = 0; i < this.children.length; i++) {
-      for (var key in this.children[i]) {
-        if (this.children[i][key] === target) {
-          return true;
+  var result = false 
+
+  var traverse = function (treeNode) {
+    if (treeNode.value === target) {
+      result = true;
+    } else {
+      var childrenLen = treeNode.children.length;
+      if (len = childrenLen > 0 ) {
+        for (var i = 0; i < childrenLen; i++) {
+          traverse(treeNode.children[i]);
         }
       }
     }
   }
-  return false;
 
+
+  traverse (this);
+  return result;
 };
-
 
 
 /*
  * Complexity: What is the time complexity of the above functions?
 
- addChild O()
- contains O()
+ addChild O(1) constant
+ contains O(n^2) exponential
 
  */
