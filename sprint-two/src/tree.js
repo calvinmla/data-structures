@@ -30,6 +30,8 @@ treeMethods.contains = function(target) {
       }
     }
   };
+
+
   traverse (this);
   return result;
 };
