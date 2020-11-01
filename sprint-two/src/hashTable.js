@@ -7,6 +7,23 @@ var HashTable = function() {
 
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
+
+  this._storage.set(index, v); // if we set bucket equal to this, it is always undefined because this._storage.set does not equal anything. it only sets what 'this._storage[index]' is
+  var bucket = this._storage[index];
+  if (!bucket) {
+    bucket = [];
+    bucket.push([k, v]);
+    this._storage[index] = bucket;
+  } else {
+    for ( var i = 0; i < bucket.length; i++ ) {
+      if (bucket[i][0] === k) {
+        bucket[i][1] = v;
+      } else {
+        bucket.push([k, v]);
+      }
+    }
+  }
+
   // var bucket = this._storage[index];
   // if (!bucket) { // if its empty bucket with no tuples yet
   //   bucket = [];
@@ -23,25 +40,19 @@ HashTable.prototype.insert = function(k, v) {
   //   }
   // }
 
-  var bucket = this._storage.set(index);
-  if (!bucket) {
-    bucket = [];
-    bucket.push([k, v]);
-    this._storage[index] = bucket;
-  } else {
-    for ( var i = 0; i < bucket.length; i++ ) {
-      if (bucket[i][0] === k) {
-        bucket[i][1] = v;
-      } else {
-        bucket.push([k, v]);
-      }
-    }
-  }
-
 };
 
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
+
+  this._storage.get(index);
+  var bucket = this._storage[index];
+  for (var i = 0; i < bucket.length; i++) {
+    if (bucket[i][0] === k) {
+      return bucket[i][1];
+    }
+  }
+
   // var bucket = this._storage[index];
   // for (var i = 0; i < bucket.length; i++) {
   //   if (bucket[i][0] === k) {
@@ -49,18 +60,11 @@ HashTable.prototype.retrieve = function(k) {
   //   }
   // }
 
-
-  var bucket = this._storage.get(index);
-  for (var i = 0; i < bucket.length; i++) {
-    if (bucket[i][0] === k) {
-      return bucket[i][1];
-    }
-  }
-
 };
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
+
   var bucket = this._storage[index];
   for (var i = 0; i < bucket.length; i++) {
     if (bucket[i][0] === k) {
