@@ -57,8 +57,8 @@ bstMethods.depthFirstLog = function(callback) {
 /*
  * Complexity: What is the time complexity of the above functions?
 
- insert - O()
- contains - O()
- depthFirstLog - O()
+ insert - O(n) - worst case O(log(n)) - average
+ contains - O(n) - worst case O(log(n)) - average
+ depthFirstLog - O(n) - worst case O(log(n)) - average
 
  */
