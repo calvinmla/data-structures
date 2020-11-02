@@ -24,4 +24,16 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  // additional test
+
+  it('should return union of Set A and Set B', function() {
+    set.addTestA('cat');
+    set.addTestA('bird');
+    set.addTestA('mouse');
+    set.addTestB('lion');
+    set.addTestB('tiger');
+    set.addTestB('cat');
+    expect(set.union()).to.equal(JSON.stringify(['cat']));
+  });
+
 });

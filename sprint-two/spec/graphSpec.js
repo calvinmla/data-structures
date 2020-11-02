@@ -68,4 +68,21 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  // additional test
+
+  it('should execute a callback on each node and stringify the node', function() {
+    var stringify = function(item) {
+      graph.addNode(JSON.stringify(item));
+    };
+    graph.addNode(5);
+    graph.addNode(2);
+    graph.addNode(1);
+    graph.addNode(3);
+    graph.forEachNode(stringify);
+    expect(graph.contains('5')).to.equal(true);
+    expect(graph.contains('2')).to.equal(true);
+    expect(graph.contains('1')).to.equal(true);
+    expect(graph.contains('3')).to.equal(true);
+  });
 });

@@ -47,6 +47,17 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  // additional test
+
+  it('should store strings, numbers, and booleans', function() {
+    hashTable.insert('Steven', 'Seagal');
+    hashTable.insert('10', 10);
+    hashTable.insert('true', true);
+    expect(hashTable.retrieve('Steven')).to.equal('Seagal');
+    expect(hashTable.retrieve('10')).to.equal(10);
+    expect(hashTable.retrieve('true')).to.equal(true);
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {

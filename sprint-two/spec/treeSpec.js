@@ -41,4 +41,13 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  // additional test
+
+  it('should take a string or boolean argument', function() {
+    tree.addChild('five');
+    tree.addChild(true);
+    expect(tree.contains('five')).to.equal(true);
+    expect(tree.contains(true)).to.equal(true);
+  });
+
 });

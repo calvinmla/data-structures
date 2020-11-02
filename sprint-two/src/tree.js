@@ -11,6 +11,7 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
+
   var child = new Tree(value);
   this.children.push(child);
 };
@@ -30,9 +31,6 @@ treeMethods.contains = function(target) {
       }
     }
   };
-
-
-
   traverse (this);
   return result;
 };

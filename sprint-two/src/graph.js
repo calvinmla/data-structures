@@ -1,5 +1,3 @@
-
-
 // Instantiate a new graph
 var Graph = function() {
   this.nodes = {};
@@ -71,7 +69,7 @@ Graph.prototype.forEachNode = function(cb) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
- 
+
  "time complexity refers to -OUR- implimentation style"
  addNode - O(1)
  contains - O(1)
@@ -80,6 +78,7 @@ Graph.prototype.forEachNode = function(cb) {
  addEdge - O(1)
  removeEdge - O(1)
  forEachNode - O(n)
+
  */
 
 

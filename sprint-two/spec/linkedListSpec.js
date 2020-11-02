@@ -52,4 +52,9 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+
+  it('should not throw an error when adding empty values', function() {
+    linkedList.addToTail();
+    expect(linkedList.addToTail()).to.equal(undefined);
+  });
 });

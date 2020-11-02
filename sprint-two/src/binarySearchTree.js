@@ -9,20 +9,22 @@ var BinarySearchTree = function(value) {
 var bstMethods = {};
 
 bstMethods.insert = function(value) {
-  var traverse = function (node) {
-    if (value < node.value && node.left === null) {
-      node.left = BinarySearchTree(value);
-      return;
-    } else if (value < node.value && node.left !== null) {
-      traverse(node.left);
-    } else if (value > node.value && node.right === null) {
-      node.right = BinarySearchTree(value);
-      return;
-    } else if (value > node.value && node.right !== null) {
-      traverse(node.right);
-    }
-  };
-  traverse(this);
+  if (typeof value === 'number') {
+    var traverse = function (node) {
+      if (value < node.value && node.left === null) {
+        node.left = BinarySearchTree(value);
+        return;
+      } else if (value < node.value && node.left !== null) {
+        traverse(node.left);
+      } else if (value > node.value && node.right === null) {
+        node.right = BinarySearchTree(value);
+        return;
+      } else if (value > node.value && node.right !== null) {
+        traverse(node.right);
+      }
+    };
+    traverse(this);
+  }
 };
 
 
